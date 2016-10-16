@@ -47,12 +47,42 @@ app.controller('TicTacToc', function($scope) {
 
     }
 
+
+
+
+
+    $scope.clickGme = function (x) {
+
+        if ($scope.playerActive == null){
+            alert("select player");
+
+        }else{
+
+            if (x.etat == null){
+
+                $scope.countClicplayer++;
+                console.log($scope.countClicplayer,$scope.bloc)
+                x.contenu = $scope.symbol;
+                x.etat="clique";
+                $scope.symbol =($scope.symbol=='X') ? 'O':'X';
+                $scope.game =($scope.game=='player1') ? 'player2':'player1';
+                $scope.playerActive =($scope.playerActive=='player1') ? 'player2':'player1';
+                    calculwinner($scope.bloc);
+            }
+
+        }
+
+    }
+
+
+
     function calculwinner (x) {
 
         function winner(A,B,C) {
-            if (    ((A=='X') && (B=='X') && (C=='X'))   ||    ((A=='O') && (B=='O') && (C=='O'))     ){
-
-                console.log('winner is ..'                                   )
+            if (    ((A=='X') && (B=='X') && (C=='X'))|| ((A=='O') && (B=='O') && (C=='O')) ){
+                $scope.playerActive =($scope.playerActive=='player1') ? 'player2':'player1';
+                console.log('winner is ..',$scope.playerActive )
+                alert('winner is ..',$scope.playerActive);
             }
 
 
@@ -66,34 +96,6 @@ app.controller('TicTacToc', function($scope) {
         winner(x.top[0].contenu, x.top[1].contenu, x.top[2].contenu)
         winner(x.top[2].contenu, x.middle[1].contenu, x.bottom[0].contenu)
 
-
-    }
-
-
-
-    $scope.clickGme = function (x) {
-
-        if ($scope.playerActive == null){
-            alert("select player");
-
-        }else{
-
-
-
-            if (x.etat == null){
-
-                $scope.countClicplayer++;
-                console.log($scope.countClicplayer,$scope.bloc)
-                x.contenu = $scope.symbol;
-                x.etat="clique";
-                $scope.symbol =($scope.symbol=='X') ? 'O':'X';
-                $scope.game =($scope.game=='player1') ? 'player2':'player1';
-
-                    calculwinner($scope.bloc);
-
-            }
-
-        }
 
     }
 
