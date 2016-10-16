@@ -22,7 +22,29 @@
         </tr>
 
     </table>
+    <br>
+    <div ng-hide="myVar">
+        <label>chois your symbl</label>
+        <div class="form-group">
+            <div class="radio">
+                <label ng-model="myVar">
+                    <input type="radio" name="symbol" value="X"  ng-click="toggle()"  ng-model="formData.symbol">
+                    X
+                </label>
+            </div>
+            <div class="radio" ng-model="myVar">
+                <label>
+                    <input type="radio" name="symbol" value="O"   ng-click="toggle()" ng-model="formData.symbol">
+                    O
+                </label>
+            </div>
+        </div>
+    </div>
 
+    <p></p>
+    {{formData.symbol}}
+    <button name="button" ng-disabled="game=='player1'"  ng-click="player('player1')">player 1</button>
+    <button name="button"  ng-disabled="game=='player2'"  ng-click="player('player2')">player 2</button>
 
 </div>
 
