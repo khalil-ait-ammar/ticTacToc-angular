@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Tic Tac Toc</title>
 </head>
+
 <body ng-app="app">
 
 <div ng-controller="TicTacToc">
 
+    <table>
+        <tr>
+            <td ng-repeat="x in bloc.top" ng-click="clickGme(x,$event,$index)">{{x.contenu}}</td>
+        </tr>
+        <tr>
+            <td ng-repeat="x in bloc.middle" ng-click="clickGme(x,$event,$index)">{{x.contenu}}</td>
+        </tr>
+        <tr>
+            <td ng-repeat="x in bloc.bottom" ng-click="clickGme(x,$event,$index)">{{x.contenu}}</td>
+        </tr>
+
+    </table>
 
 
 </div>
